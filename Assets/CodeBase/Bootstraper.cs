@@ -15,11 +15,6 @@ public class Bootstraper : MonoBehaviour
         _presenter = new HudViewPresenter(hudView, _hero);
     }
 
-    private void Update()
-    {
-        _hero.Mana.Heal(Time.deltaTime);
-    }
-
     private void OnEnable()
     {
         _presenter.Enable();
