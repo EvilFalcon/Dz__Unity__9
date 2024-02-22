@@ -9,24 +9,18 @@ public class Bootstraper : MonoBehaviour
     
     private void Awake()
     {
-         _hero = new Hero(100, 80);
+        _hero = new Hero(100, 80);
         HudView hudView = Load<HudView>("HudView");
 
         _presenter = new HudViewPresenter(hudView, _hero);
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable() =>
         _presenter.Enable();
-    }
 
-    private void OnDisable()
-    {
+    private void OnDisable() =>
         _presenter.Disable();
-    }
 
-    private T Load<T>(string path) where T : MonoBehaviour
-    {
-        return Instantiate(Resources.Load<T>(path));
-    }
+    private T Load<T>(string path) where T : MonoBehaviour =>
+        Instantiate(Resources.Load<T>(path));
 }

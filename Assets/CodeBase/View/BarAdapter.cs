@@ -29,6 +29,7 @@ namespace CodeBase.View
         private void OnPointChanged()
         {
             _barView.SetValue(_point.Value / _point.Max);
+            _barView.OnUpdate();
         }
     }
 }
