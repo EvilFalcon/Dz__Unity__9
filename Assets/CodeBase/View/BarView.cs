@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public class BarView : MonoBehaviour
 {
-    private const float Epsilon = 0.1f;
+    private const float Epsilon = 0.01f;
 
     private Slider _slider;
     private Coroutine _coroutine;
@@ -35,9 +35,9 @@ public class BarView : MonoBehaviour
 
     private IEnumerator Coroutine()
     {
-        while (Math.Abs(_slider.value - _targetValue) > Epsilon)
+        while (Math.Abs(_slider.value - _targetValue) > 0)
         {
-            _slider.value = Mathf.MoveTowards(_slider.value, _targetValue, Time.deltaTime);
+            _slider.value = Mathf.MoveTowards(_slider.value, _targetValue, Epsilon );
             
             yield return _coroutineDelay;
         }
